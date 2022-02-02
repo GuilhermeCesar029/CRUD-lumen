@@ -104,5 +104,20 @@ class UserController extends Controller
         }
     }
 
+    public function search(Request $request)
+    {
+        try{
+            $filter = $request->filter;
+            $users = User::where('use_name', 'LIKE', '%'.$filter.'%')
+                ->orWhere('use_email', 'LIKE', '%'.$filter.'%')
+                ->paginate(10);
+
+            return response()->json($users);
+
+        }catch(\Exception $error){
+            return $error->getMessage();
+        }
+    }
+
 
 }

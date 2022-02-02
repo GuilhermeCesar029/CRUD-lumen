@@ -24,4 +24,5 @@ $router->group(['prefix'=>'api/v1'], function() use($router){
     $router->get('/user/{id}', 'UserController@show');
     $router->put('/user/{id}', 'UserController@update');
     $router->delete('/user/{id}', 'UserController@destroy');
+    $router->post('/users/search', 'UserController@search');
 });
